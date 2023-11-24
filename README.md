@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
+## Next.js , capacitor 를 이용하여 안드로이드, ios 앱 배포
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+package.json 파일에 "static": "next build && next export" 추가
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```bash
+npm install -D @capacitor/cli
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+npx cap init
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+npm install @capacitor/core @capacitor/ios @capacitor/android
 
-## Learn More
+#XCODE 여는거
+npx cap add ios 
 
-To learn more about Next.js, take a look at the following resources:
+#Android Studio 여는거
+npx cap add android
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#뭐 수정되고나면 sync 해줘야되는듯함
+npx cap sync
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- npx run build 실행 오류시 기존 npm run dev 실행중인거 끄고 진행
+- out 폴더 생성 안되면 next.config.js 파일에 output: 'export' 추가 해줘야함
